@@ -150,10 +150,6 @@
                     <includes>
                         <include>**/*.java</include>
                     </includes>
-                    <systemPropertyVariables>
-                        <!--suppress UnresolvedMavenProperty -->
-                        <browserType>${browserType}</browserType>
-                    </systemPropertyVariables>
                 </configuration>
                 <dependencies>
                     <!--    aspectj is required by allure   -->

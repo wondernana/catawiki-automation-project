@@ -29,9 +29,9 @@ public class LotPage {
     private static final Logger LOG = Logger.getLogger("Lot Page");
 
     private static final String NOT_A_DIGIT_REGEX = "[^\\d]";
-    // matches values like "2d 5h 30m 10s" (but doesn't validate that the numbers are in correct ranges for days/hours/minutes/seconds)
+    // matches values like "2d 5h 30m 10s", with days being optional (but doesn't validate that the numbers are in correct ranges for days/hours/minutes/seconds)
     // also assumes that auctions do not last for months
-    private static final String TIMER_COUNTDOWN_REGEX = "\\d+d \\d+h \\d+m \\d+s";
+    private static final String TIMER_COUNTDOWN_REGEX = "(\\d+d )?\\d+h \\d+m \\d+s";
 
     public Header header() {
         return header;
@@ -46,7 +46,6 @@ public class LotPage {
 
         String titleText = lotTitle.getText();
         assertThat(titleText, not(emptyString()));
-
         return this;
     }
 
@@ -58,7 +57,6 @@ public class LotPage {
 
         int favorites = Integer.parseInt(lotFavoritesButton.getText());
         assertThat(favorites, is(greaterThanOrEqualTo(0)));
-
         return this;
     }
 
@@ -73,14 +71,12 @@ public class LotPage {
 
         int amount = Integer.parseInt(numericText);
         assertThat(amount, is(greaterThanOrEqualTo(0)));
-
         return this;
     }
 
     @Step("Verify that time till auction closed is displayed and in correct format")
     public LotPage shouldDisplayTimeTillAuctionClosed() {
         timeTillClosed.shouldBe(visible).shouldHave(matchText(TIMER_COUNTDOWN_REGEX));
-
         return this;
     }
 }
