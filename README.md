@@ -35,12 +35,12 @@ Test report:
 # Getting Started
 
 **Required**:
-1. [Java 21](https://jdk.java.net/archive/)
+1. [Java 23](https://jdk.java.net/archive/)
 2. [Apache Maven](https://maven.apache.org/install.html)
 
 If you're using [Homebrew](https://brew.sh), run:
 
-`brew install openjdk@21`
+`brew install openjdk@23`
 
 `brew install maven`
 
